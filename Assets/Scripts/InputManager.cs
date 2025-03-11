@@ -11,10 +11,17 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnSpacePressed = new UnityEvent();
     // Event triggered when right mouse button is pressed (for dash)
     public UnityEvent OnDash = new UnityEvent();
+    public UnityEvent OnSettingsMenu = new();
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            OnSettingsMenu?.Invoke();
+        }
+        if (GameManager.Instance != null && GameManager.Instance.IsSettingsMenuActive) return;
+
         Vector3 input = Vector3.zero;
         if (Input.GetKey(KeyCode.A))
         {

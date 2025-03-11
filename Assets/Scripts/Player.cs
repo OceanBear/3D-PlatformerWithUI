@@ -38,6 +38,11 @@ public class Player : MonoBehaviour
         inputManager.OnDash.AddListener(Dash);
         rb = GetComponent<Rigidbody>();
     }
+
+    public void UpdatePlayerMaxSpeed(float SlideSpeed)
+    {
+        maxSpeed = SlideSpeed;
+    }
     private void ReceiveMovementInput(Vector3 input)
     {
         if (isDashing)
@@ -177,7 +182,6 @@ public class Player : MonoBehaviour
         get { return !isDashing && dashCooldownTimer <= 0f; }
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the collided object is tagged as "Ground"
@@ -187,5 +191,7 @@ public class Player : MonoBehaviour
             doubleJumpUsed = false;
         }
     }
+
+
 
 }

@@ -18,9 +18,9 @@ public class CursorManager : MonoBehaviour
             else
                 LockCursor();
         }
-
-        // When cursor is unlocked, clicking inside the game window re-locks it
-        if (Cursor.lockState != CursorLockMode.Locked && Input.GetMouseButtonDown(0))
+        // When the mouse is unlocked and the left mouse button is clicked
+        // if the settings menu is not open, the mouse is locked
+        if (Cursor.lockState != CursorLockMode.Locked && Input.GetMouseButtonDown(0) && !GameManager.Instance.IsSettingsMenuActive)
         {
             LockCursor();
         }
